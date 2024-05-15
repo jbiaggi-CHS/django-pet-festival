@@ -1,0 +1,38 @@
+{% extends "base_generic.html" %}
+
+{% load static %}
+
+{% block title %}
+    <title>Untitled</title>
+{% endblock %}
+
+{% block content %}
+<br><br>
+    <div class="pets-container">
+        {% for pet in pets %}
+        {% if pet.hold == False %}
+        <a href="{% url 'pet_detail' pet.id %}" class="pet-card-link">
+            <div class="pet-card">
+                <h2>{{ pet.name }}</h2>
+                <p><strong>Breed:</strong> {{ pet.breed }}</p>
+                <p><strong>Status:</strong> {{ pet.status }}</p>
+                <img src="{{ pet.photo.url }}" alt="{{ pet.name }}" style="width: 200px; height: auto;">
+                <p><strong>Hold:</strong> {{ pet.hold }}</p>
+                <p><a href="{% url 'pet_detail' pet.id %}">View Details</a></p>
+            </div>
+        </a>
+        {% elif pet.hold == True %}
+        <a href="{% url 'pet_hold' pet.id %}" class="pet-card-link">
+            <div class="pet-card">
+                <h2>{{ pet.name }} - ON HOLD</h2>
+                <p><strong>Breed:</strong> {{ pet.breed }}</p>
+                <p><strong>Status:</strong> {{ pet.status }}</p>
+                <img src="{{ pet.photo.url }}" alt="{{ pet.name }}" style="width: 200px; height: auto;">
+                <p><strong>Hold:</strong> {{ pet.hold }}</p>
+                <p><a href="{% url 'pet_hold' pet.id %}">View Details</a></p>
+            </div>
+        </a>
+        {% endif %}
+        {% endfor %}
+    </div>
+{% endblock %}
