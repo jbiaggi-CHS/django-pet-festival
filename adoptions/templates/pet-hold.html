@@ -1,0 +1,12 @@
+{% extends 'base_generic.html' %}
+
+{% block content %}
+<h1>This pet is on hold. Would you like to cancel that hold?</h1>
+
+<form method="post">
+  {% csrf_token %}
+  <button type="submit" name="action" value="remove_hold">Remove Hold</button>
+  <button type="submit" name="action" value="keep_hold">No, keep hold</button>
+</form>
+
+{% endblock %}

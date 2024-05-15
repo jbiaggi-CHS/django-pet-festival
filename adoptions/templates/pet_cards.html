@@ -1,0 +1,9 @@
+{% for pet in pets %}
+<div class="border rounded-md p-4">
+    <h2 class="text-lg font-semibold">{{ pet.name }}</h2>
+    <p class="text-sm">{{ pet.breed }}</p>
+    <img src="{{ pet.photo.url }}" alt="{{ pet.name }} Photo" class="mt-2">
+    <p class="text-sm">Status: {{ pet.status }}</p>
+    <p class="text-sm">Hold: {{ pet.hold }}</p>
+</div>
+{% endfor %}
